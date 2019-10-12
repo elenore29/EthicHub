@@ -30,7 +30,6 @@ export default {
 
   },
   mounted () {
-    this.getCommunity()
   },
   components: {
     'eh-layout': BaseLayout
