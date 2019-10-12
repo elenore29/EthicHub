@@ -9,6 +9,7 @@ import BaseLayout from '@/layouts/BaseLayout.vue'
 /**
  * Here goes the "main screen" with communitie's cards
  */
+
 export default {
   name: 'Communities',
   data () {
@@ -16,12 +17,9 @@ export default {
     }
   },
   mounted () {
-    this.getCommunities()
   },
   methods: {
-    getCommunities () {
 
-    }
   },
   components: {
     'eh-layout': BaseLayout

@@ -26,12 +26,8 @@ export default {
   computed: {
 
   },
-  watch: {
-  },
   methods: {
-    getCommunity () {
-      // Fetch backend data
-    }
+
   },
   mounted () {
     this.getCommunity()
