@@ -1,6 +1,8 @@
 <template>
     <eh-layout>
       Main Communities Page
+      <br> 
+      Aqui va el cuerpo de la página
     </eh-layout>
 </template>
 
