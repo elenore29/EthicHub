@@ -1,6 +1,8 @@
 <template>
   <div class="header">
-    Header hola
+    <router-link to="/"> Lista de communidades </router-link>
+    <router-link to="/communities/:communityID/"> Detalles comunidad </router-link>
+ 
   </div>
 </template>
 
@@ -13,7 +15,8 @@ export default {
     }
   },
   mounted () {
-
+  },
+  computed: {
   },
   methods: {
 
@@ -31,3 +34,4 @@ export default {
   }
 
 </style>
+
