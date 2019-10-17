@@ -6,19 +6,19 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   
   state: {
-    cursos: []
+    communities: []
   },
   mutations: {
     dataFunc(state, datos){
-      state.cursos = datos
+      state.communities = datos
     }
   },
   actions: {
     getData: async function({ commit }){
       const data = await fetch('https://fantasyhub.herokuapp.com/communities/');
-      const cursos = await data.json();
-      commit('dataFunc', cursos)
-      console.log(cursos);
+      const communities = await data.json();
+      commit('dataFunc', communities)
+      console.log(communities);
     },  
   },
 })
