@@ -12,13 +12,10 @@ export default {
   name: 'app',
   components: {},
   computed: {
-    ...Vuex.mapState(['details'])
   },
   methods: {
-    ...Vuex.mapActions(['getDetails']),
   },
   mounted () {
-    this.getDetails(); 
   },
 }
 </script>

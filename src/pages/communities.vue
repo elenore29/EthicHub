@@ -8,14 +8,14 @@
         <el-col class="community-card" :span="6" v-for="item in communities" :key="item.id">
           <el-card :body-style="{ padding: '0px' }" shadow="never">
             <h2>{{item.name}}</h2>
-            <div  @click="getId(item)" class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
+            <div  class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
             <div class="card-body" style="padding: 14px;">
               <div class="card-info">
                 <p>Faltan € 000.000</p> 
                 <el-progress :percentage="50" :color="customColor"></el-progress>
                 <p class="project-name"><b>{{item.project.name}}</b></p>
                 <div class="select-amount">
-                  <router-link to="/communities/:communityID/" class="text"><b>INVERTIR</b></router-link>
+                  <router-link to="/communities/:communityID/" class="text"><div @click="getDetails(item)"><b>INVERTIR</b></div></router-link>
                   <div class="selector">  
                     <select>
                       <option   
@@ -50,7 +50,6 @@ export default {
   data () {
     return {
       cardId: document.getElementsByClassName('img'),
-      id: 0,
       customColor: '#062f4f',
       options: [{
               value: '25',
@@ -72,18 +71,17 @@ export default {
 
   computed: {
     ...Vuex.mapState(['communities']),
+    ...Vuex.mapState(['details'])
+
   },
 
   methods: {
     ...Vuex.mapActions(['getData']),
+    ...Vuex.mapActions(['getDetails']),
 
     format(percentage) {
       return percentage === 100 ? 'Full' : `${percentage}%`;
     },
-    getId(cardId, id){
-      id = cardId.id
-      console.log(id)
-    }
   },
 
   components: {
