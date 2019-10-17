@@ -3,8 +3,7 @@
     <img id="logo" class="icons" src="../assets/images/ethichub.png" alt="">
     <div class="fantasy">Fantasy Hub</div>
     <img id="hamburger" class="icons" src="../assets/images/Hamburguer_background.svg" alt="">
-    <!-- <router-link to="/"> Lista de communidades </router-link>
-    <router-link to="/communities/:communityID/"> Detalles comunidad </router-link> -->
+
   </div>
 </template>
 
@@ -36,8 +35,8 @@ export default {
   }
 
   #logo {
-    width: 5%;
     padding-left: 25px;
+    height: 75px;
   }
 
   .fantasy {

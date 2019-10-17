@@ -5,10 +5,21 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 export default {
   name: 'app',
-  components: {}
+  components: {},
+  computed: {
+    ...Vuex.mapState(['details'])
+  },
+  methods: {
+    ...Vuex.mapActions(['getDetails']),
+  },
+  mounted () {
+    this.getDetails(); 
+  },
 }
 </script>
 

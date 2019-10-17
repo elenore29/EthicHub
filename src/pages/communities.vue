@@ -8,14 +8,14 @@
         <el-col class="community-card" :span="6" v-for="item in communities" :key="item.id">
           <el-card :body-style="{ padding: '0px' }" shadow="never">
             <h2>{{item.name}}</h2>
-            <div  class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
+            <div  @click="getId(item)" class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
             <div class="card-body" style="padding: 14px;">
               <div class="card-info">
                 <p>Faltan € 000.000</p> 
                 <el-progress :percentage="50" :color="customColor"></el-progress>
                 <p class="project-name"><b>{{item.project.name}}</b></p>
                 <div class="select-amount">
-                  <div class="text"><b>INVERTIR</b></div>
+                  <router-link to="/communities/:communityID/" class="text"><b>INVERTIR</b></router-link>
                   <div class="selector">  
                     <select>
                       <option   
@@ -25,15 +25,6 @@
                       :value="item.value">              
                       </option>
                     </select>
-                    <!-- <el-select v-model="value" placeholder="Select">
-                      <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value" 
-                        :selected="item.label[0]">
-                      </el-option>
-                    </el-select> -->
                   </div>
                 </div>
             <br>
@@ -49,28 +40,29 @@
 </template>
 
 <script>
-import BaseLayout from '@/layouts/BaseLayout.vue'
-import Vue from 'vue'
-import Vuex from 'vuex'
+import BaseLayout from '@/layouts/BaseLayout.vue'; 
+import Vue from 'vue';
+import Vuex from 'vuex'; 
 
 //Here goes the "main screen" with communitie's cards
 
 export default {
   data () {
     return {
+      cardId: document.getElementsByClassName('img'),
+      id: 0,
       customColor: '#062f4f',
-   options: [{
-          value: '25',
-          label: '€ 25'
-        }, {
-          value: '50',
-          label: '€ 50'
-        }, {
-          value: '100',
-          label: '€ 100'
-        }],
-        value: ''
-      
+      options: [{
+              value: '25',
+              label: '€ 25'
+            }, {
+              value: '50',
+              label: '€ 50'
+            }, {
+              value: '100',
+              label: '€ 100'
+            }],
+            value: ''
     }
   },
 
@@ -79,13 +71,18 @@ export default {
   },
 
   computed: {
-    ...Vuex.mapState(['communities'])
+    ...Vuex.mapState(['communities']),
   },
 
   methods: {
     ...Vuex.mapActions(['getData']),
+
     format(percentage) {
       return percentage === 100 ? 'Full' : `${percentage}%`;
+    },
+    getId(cardId, id){
+      id = cardId.id
+      console.log(id)
     }
   },
 
@@ -130,8 +127,7 @@ h2 {
 }
 
 .community-card {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-bottom: 50px;
 }
 
 .img {
@@ -146,7 +142,7 @@ h2 {
   background-color: white;
   width: 90%;
   height: 200px;
-  border-radius: 2%;
+  border-radius: 5px;
   -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
   box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
   position: relative;
@@ -171,7 +167,7 @@ h2 {
   justify-content: center;
   margin-top: 15px;
   margin-bottom: 15px;
-  border-radius: 3%;
+  border-radius: 5px;
 }
 
 select {
