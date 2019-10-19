@@ -15,7 +15,8 @@ export default new Vuex.Store({
     },
     dataDetails(state, datas){
       state.details = datas
-    }
+    },
+  
   },
   actions: {
     getData: async function({ commit }){
@@ -25,12 +26,10 @@ export default new Vuex.Store({
       console.log(communities);
     },  
     getDetails: async function({ commit }, cardId){
-      let id = await cardId.id;
-      console.log(id);
+      let id = cardId.id;
       const data2 = await fetch('https://fantasyhub.herokuapp.com/communities/'+id+'_community');
       const details = await data2.json();
       commit('dataDetails', details);
-      console.log(details); 
-    }
+    },
   },
 })

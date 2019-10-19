@@ -20,17 +20,17 @@
             <el-card class="box-card">
               <div slot="header" class="clearfix">
                 <span>Meta:</span>
-                <div style="float: right; padding: 3px 0" type="text"><b>000.000 €</b></div>
+                <div style="float: right; padding: 3px 0" type="text"><b>{{details.project.goal}} €</b></div>
               </div>
               <br>
                <div slot="header" class="clearfix">
-                <span>Interés anual en moneda local:</span>
+                <span>Interés anual <br>en moneda local:</span>
                 <div style="float: right; padding: 3px 0" type="text"><b>15 %</b></div>
               </div>
              <div>
                 <span>Faltan:</span>
-                <div style="float: right; padding: 3px 0" type="text"><b>000.000 €</b></div>
-                <el-progress :percentage="50" :color="customColor"></el-progress>
+                <div style="float: right; padding: 3px 0" type="text"><b>{{parseFloat(details.project.goal)-parseFloat(details.project.contributed)}} €</b></div>
+                <el-progress :percentage="details.project.contributed*100/details.project.goal" :color="customColor"></el-progress>
               </div>
                 <button class="button"><b>CONTRIBUIR</b></button>
 

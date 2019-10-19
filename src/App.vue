@@ -9,8 +9,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 export default {
+  
   name: 'app',
-  components: {},
+  components: {
+  },
   computed: {
   },
   methods: {
