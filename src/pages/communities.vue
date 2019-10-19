@@ -5,15 +5,22 @@
     <p class="sub-title">productivas y rentables de todo el mundo sed so eiusmod</p>
     <div class="card-container">
       <el-row :gutter="20">
-        <el-col class="community-card" :span="6" v-for="item in communities.data" :key="item.id">
+        <el-col   
+        :xs="24"
+        :sm="12"
+        :md="8"
+        :lg="6"
+        :xl="6"
+        :span="6"
+        class="community-card" v-for="item in communities.data" :key="item.id">
           <el-card :body-style="{ padding: '0px' }" shadow="never">
-            <router-link to="/communities/:communityID/"><h2 @click="getDetails(item)">{{item.name}}</h2></router-link>
+            <router-link :to="'/communities/'+ item.id"><h2 @click="getDetails(item)">{{item.name}}</h2></router-link>
 
             <div  class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
             <div class="card-body" style="padding: 14px;">
               <div class="card-info">
-                <p>Faltan € 000.000</p>
-                <el-progress :percentage="50" :color="customColor"></el-progress>
+                <p>Faltan {{parseFloat(item.project.goal)-parseFloat(item.project.contributed)}} €</p>
+                <el-progress :percentage="item.project.contributed*100/item.project.goal" :color="customColor"></el-progress>
                 <p class="project-name"><b>{{item.project.name}}</b></p>
                 <div class="select-amount">
                   <div class="text"><b>INVERTIR</b></div>
@@ -29,7 +36,7 @@
                   </div>
                 </div>
             <br>
-            <p>RECIBIRÁS <b>+ 00%</b></p>
+            <p>RECIBIRÁS <b>+ {{item.project.interest}}%</b></p>
             <p>(Interés anual en moneda local)</p>
             </div>
             </div>

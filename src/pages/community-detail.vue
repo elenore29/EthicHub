@@ -25,7 +25,7 @@
               <br>
                <div slot="header" class="clearfix">
                 <span>Interés anual <br>en moneda local:</span>
-                <div style="float: right; padding: 3px 0" type="text"><b>15 %</b></div>
+                <div style="float: right; padding: 3px 0" type="text"><b>{{details.data.project.interest}} %</b></div>
               </div>
              <div>
                 <span>Faltan:</span>
@@ -46,16 +46,17 @@
 import BaseLayout from '@/layouts/BaseLayout.vue'
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 // Here goes the detail cards
 
 export default {
-  // name: 'CommunityDetail',
-  // props: {
-  //   communityID: {
-  //     type: [String, Number],
-  //     required: true
-  //   }
-  // },
+  name: 'CommunityDetail',
+  props: {
+    communityID: {
+      type: [String, Number],
+      required: true
+    }
+  },
   data () {
     return {
       customColor: '#062f4f'
