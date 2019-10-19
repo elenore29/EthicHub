@@ -5,25 +5,25 @@
     <p class="sub-title">productivas y rentables de todo el mundo sed so eiusmod</p>
     <div class="card-container">
       <el-row :gutter="20">
-        <el-col class="community-card" :span="6" v-for="item in communities" :key="item.id">
+        <el-col class="community-card" :span="6" v-for="item in communities.data" :key="item.id">
           <el-card :body-style="{ padding: '0px' }" shadow="never">
             <router-link to="/communities/:communityID/"><h2 @click="getDetails(item)">{{item.name}}</h2></router-link>
-            
+
             <div  class="img" :style="{ backgroundImage: `url(${item.image})` }"></div>
             <div class="card-body" style="padding: 14px;">
               <div class="card-info">
-                <p>Faltan € 000.000</p> 
+                <p>Faltan € 000.000</p>
                 <el-progress :percentage="50" :color="customColor"></el-progress>
                 <p class="project-name"><b>{{item.project.name}}</b></p>
                 <div class="select-amount">
                   <div class="text"><b>INVERTIR</b></div>
-                  <div class="selector">  
+                  <div class="selector">
                     <select>
-                      <option   
+                      <option
                       v-for="item in options"
                       :key="item.value"
                       :label="item.label"
-                      :value="item.value">              
+                      :value="item.value">
                       </option>
                     </select>
                   </div>
@@ -41,30 +41,30 @@
 </template>
 
 <script>
-import BaseLayout from '@/layouts/BaseLayout.vue'; 
-import Vue from 'vue';
-import Vuex from 'vuex'; 
-//Here goes the "main screen" with communitie's cards
+import BaseLayout from '@/layouts/BaseLayout.vue'
+import Vue from 'vue'
+import Vuex from 'vuex'
+// Here goes the "main screen" with communitie's cards
 export default {
   data () {
     return {
       cardId: document.getElementsByClassName('img'),
       customColor: '#062f4f',
       options: [{
-              value: '25',
-              label: '€ 25'
-            }, {
-              value: '50',
-              label: '€ 50'
-            }, {
-              value: '100',
-              label: '€ 100'
-            }],
-            value: ''
+        value: '25',
+        label: '€ 25'
+      }, {
+        value: '50',
+        label: '€ 50'
+      }, {
+        value: '100',
+        label: '€ 100'
+      }],
+      value: ''
     }
   },
   mounted () {
-    this.getData();
+    this.getData()
   },
   computed: {
     ...Vuex.mapState(['communities']),
@@ -73,9 +73,9 @@ export default {
   methods: {
     ...Vuex.mapActions(['getData']),
     ...Vuex.mapActions(['getDetails']),
-    format(percentage) {
-      return percentage === 100 ? 'Full' : `${percentage}%`;
-    },
+    format (percentage) {
+      return percentage === 100 ? 'Full' : `${percentage}%`
+    }
   },
   components: {
     'eh-layout': BaseLayout
@@ -127,11 +127,11 @@ h2 {
   width: 90%;
   height: 200px;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
-  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
+  -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33);
+  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33);
   position: relative;
   top: -40px;
-  padding: 5%; 
+  padding: 5%;
   color: #2c3e50;
   font-size: 12px;
 }
@@ -140,10 +140,10 @@ h2 {
 }
 .select-amount {
   background-color: #87f96e;
-  -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
-  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33); 
+  -webkit-box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33);
+  box-shadow: 0px 3px 8px 1px rgba(0,0,0,0.33);
   padding-top: 5px;
-  padding-bottom: 5px; 
+  padding-bottom: 5px;
   font-size: 14px;
   display: flex;
   justify-content: center;
@@ -173,12 +173,12 @@ select:focus{ outline: none;}
 .card-body {
   background-color: #edefec;
 }
-// estilos de element 
+// estilos de element
 .time {
     font-size: 13px;
     color: #999;
   }
-  
+
   .bottom {
     margin-top: 13px;
     line-height: 12px;
@@ -196,7 +196,7 @@ select:focus{ outline: none;}
       display: table;
       content: "";
   }
-  
+
   .clearfix:after {
       clear: both
   }

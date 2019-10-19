@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
 
 export default {
-  
+
   name: 'app',
   components: {
   },
@@ -18,15 +18,15 @@ export default {
   methods: {
   },
   mounted () {
-  },
+  }
 }
 </script>
 
 <style>
 @import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
- 
+
 *{
-  margin: 0; 
+  margin: 0;
 }
 
 #app {
