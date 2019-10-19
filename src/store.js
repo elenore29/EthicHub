@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import Axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -29,9 +28,8 @@ export default new Vuex.Store({
         console.log(error);
       }
     },
-    getDetails: async function ({commit}, cardId) {
+    getDetails: async function ({commit}, id) {
       try {
-        let id = cardId.id
         const details = await axios.get('https://fantasyhub.herokuapp.com/communities/' + id + '_community')
         console.log(details);
         commit('dataDetails', details)
